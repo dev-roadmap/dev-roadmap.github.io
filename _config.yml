@@ -1,0 +1,40 @@
+baseurl: "" # the subpath of your site, e.g. /blog
+github_username:  vepo
+url: "https://dev-roadmap.github.io"
+
+# jekyll-paginate configuration
+paginate: 10
+paginate_path: /pag-:num
+
+defaults:
+  -
+    values:
+      layout: "default"
+
+# Build settings
+markdown: kramdown
+kramdown:
+  syntax_highlighter: rouge
+  input: GFM
+#theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-paginate
+  - jekyll-seo-tag
+  - jekyll-compose
+  - jekyll-redirect-from
+exclude:
+  - vendor
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - README.md
+  - Rakefile
+include: 
+  - _plugins
+  - _pages
+permalink: /posts/:title/
+excerpt_separator: <!--more-->
+
+host: 0.0.0.0

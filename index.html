@@ -1,5 +1,21 @@
-<html>
-<body>
-<h1>Hello World</h1>
-</body>
-</html>
+---
+layout: default
+title: DEV Roadmap
+description: Um repositório de conteúdo para ajudar desenvolvedores a crescer
+---
+
+<div class="card-deck posts">
+    <div class="card-columns">
+        {% for post in paginator.posts %}
+        <a href="{{ post.url }}">
+            <div class="card">
+                <img class="card-img-top" src="{{ post.cover_image }}" />
+                <div class="card-body">
+                    <h5 class="card-title">{{ post.title }}</h5>
+                    <p class="card-text">{{ post.description }}</p>
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>

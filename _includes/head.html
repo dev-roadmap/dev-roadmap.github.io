@@ -1,0 +1,142 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="/icon.png" />
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@dev_roadmap">
+    <meta name="twitter:creator" content="@dev_roadmap">
+    <!--
+
+        TODO: Replace
+    <meta name="google-site-verification" content="xw_kgncLhv22qVjTIPi7adALZre8FIHY02-DGCuYuZ4" />
+
+    -->
+
+    <!-- SEO stuff -->
+    {% if page.series %}
+    <title>{{ page.series }}: {{page.title}}</title>
+    <meta property="og:title" content="{{ page.series }}: {{page.title}}" />
+    <meta name="twitter:title" content="{{ page.series }}: {{page.title}}">
+    {% else %}
+    <title>{{page.title}}</title>
+    <meta property="og:title" content="{{page.title}}" />
+    <meta name="twitter:title" content="{{page.title}}">
+    {% endif %}
+
+
+    {% if page.description %}
+    <meta name="description" content="{{page.description}}" />
+    <meta property="og:description" content="{{page.description}}" />
+    <meta name="twitter:description" content="{{page.description}}">
+    {% else %}
+    <meta name="description" content="{{page.excerpt | strip_html | strip}}" />
+    <meta property="og:description" content="{{page.excerpt | strip_html| strip}}" />
+    <meta name="twitter:description" content="{{page.excerpt | strip_html| strip}}">
+    {% endif %}
+
+    {% if page.tags %}
+    <meta name="keywords" content="{{ page.tags | join:', ' }}">
+    {% else %}
+    <meta name="keywords"
+        content="Software Development, Java, Apache Kafka, Desenvolvimento de Software, Jakarta EE, TDD, Microsserviçoes">
+    {% endif %}
+
+    <link rel="canonical" href="{{site.url}}{{page.url}}" />
+    <meta property="og:url" content="{{site.url}}{{page.url}}" />
+    <meta name="twitter:url" content="{{site.url}}{{page.url}}">
+
+    <meta property="og:site_name" content="{{site.name}}" />
+
+    {% if page.noimage %}
+    <meta property="og:image" content="{{site.url}}/assets/images/top.jpg" />
+    <meta name="twitter:image" content="{{site.url}}/assets/images/top.jpg">
+    {% elsif page.cover_image %}
+    <meta property="og:image" content="{{site.url}}{{ page.cover_image }}" />
+    <meta name="twitter:image" content="{{site.url}}{{ page.cover_image }}">
+    {% else %}
+    <meta property="og:image" content="{{site.url}}/assets/images/{{page.id}}/top.jpg" />
+    <meta name="twitter:image" content="{{site.url}}/assets/images/{{page.id}}/top.jpg">
+    {% endif %}
+
+    {% if page.id %}
+    <!-- if it's an article -->
+    <meta property="og:type" content="article" />
+    {% if page.publish_date %}
+    <meta property="article:published_time" content="{{ page.publish_date | date_to_xmlschema }}" />
+    <meta property="article:modified_time" content="{{ page.publish_date | date_to_xmlschema }}" />
+    {% endif %}
+
+    <meta content="{{site.author}}" property="article:author">
+
+    {% if page.categories %}
+    {% for category in page.categories limit:1 %}
+    <meta content="{{ category }}" property="article:section">
+    {% endfor %}
+    {% endif %}
+
+    {% if page.tags %}
+    {% for tag in page.tags %}
+    <meta content="{{ tag }}" property="article:tag">
+    {% endfor %}
+    {% endif %}
+
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "{{page.title}}",
+        "datePublished": "{{ page.publish_date | date_to_xmlschema }}",
+        {% if page.description %}
+        "description": "{{page.description}}",
+        {% else %}
+        "description": "{{page.excerpt | strip_html}}",
+        {% endif %}
+        {% if page.original %}
+        "sameAs" : [
+          "{{ page.original }}"
+        ],
+        {% endif %}
+        "url": "{{site.url}}{{page.url}}"
+      }
+    </script>
+
+    {% else %}
+    <!-- its not an article -->
+    <meta property="og:type" content="website" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "headline": "{{page.title}}",
+      {% if page.description %}
+      "description": "{{page.description}}",
+      {% else %}
+      "description": "{{page.excerpt | strip_html}}",
+      {% endif %}
+      "url": "{{site.url}}{{page.url}}",
+      "sameAs" : [
+        "https://twitter.com/vepo",
+        "https://www.linkedin.com/in/victorosorio/",
+        "https://medium.com/@vepo",
+        "https://dev.to/vepo/"
+      ]
+    }
+  </script>
+    {% endif %}
+
+    <link rel="author" href="{{site.author}}" />
+
+    <!-- End SEO stuff -->
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+    href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+    rel="stylesheet">
+    
+    <link rel="stylesheet" href="/assets/style/main.css" />
+</head>

@@ -1,0 +1,20 @@
+html,
+body {
+    font-family: "Zilla Slab", serif;
+}
+
+.navbar .navbar-brand img {
+    border-radius: 30px;
+}
+
+.card-columns .card {
+    margin-left: 0;
+}
+
+a,
+a:visited,
+a:hover,
+a:active,
+a:link {
+    color: inherit;
+}
